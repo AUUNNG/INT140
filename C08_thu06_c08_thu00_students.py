@@ -7,15 +7,29 @@
 # 109 ยุทธภูมิ
 # 117 ศุภฤกษ์
 
-# def student_data(all: list, id: int, name: str, lastname: str):
-# build a list of (id, name, lastname)
-# append this list to all
+def student_data(all: list, id: int, name: str, lastname: str):
+    all.append(id)
+    all.append(name)
+    all.append(lastname)
+    print(all)
 
 def read_one_member(all: list):
-    firstname = input("input ur firstname : ")
+    name = input("input ur firstname : ")
     lastname = input("input ur lastname : ")
-    id = input("input ur id : ")
-    while 
+    id = ""
+    while True:
+        id = input("input ur id: ")
+        if len(id) < 10:
+            print('id must be 11 digits')
+            continue
+        try:
+            id = int(id)
+            break
+        except ValueError:
+            print('input not correct')
+    print('id correct')
+    student_data(all, id, name, lastname)
+
 
 # read id, name, lastname from user input
 # validate id: 67130500XXX (loop until id is correct)
