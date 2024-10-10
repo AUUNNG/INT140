@@ -19,11 +19,11 @@ def main():
             break
         id, name,lastname = read_one_student()
         add_student_to_dict(list_of_dicts, id, name, lastname)
-        add_student_to_lists(dict_of_lists, id, name. lastname)
+        add_student_to_lists(dict_of_lists, id, name, lastname)
     # if yes,
     #    call read_one_student() that read id, name, and lastname
     #    call add_student_to_dict(list_of_dicts, id, name, lastname)
-    #    call add_student_to_lists(dict_of_lists, id, name. lastname)
+    #    call add_student_to_lists(dict_of_lists, id, name, lastname)
     # if no,
     #    call print_students_from_dict(list_of_dicts)
     #    call print_students_from_lists(dict_of_lists)
@@ -44,10 +44,9 @@ def read_one_student() -> (int, str, str):
 def add_student_to_dict(students: list, id: int, name: str, lastname: str):
     print('add_student_to_dict ok')
     students = []
-    dict = {'id': id, 'name': name, 'lastname': lastname, }
+    dict = {'ids': id, 'names': name, 'lastnames': lastname, }
     students.append(dict)
     print(students)
-
 
 def add_student_to_lists(students: dict, id: int, name: str, lastname: str):
     print('add_student_to_lists ok')
@@ -59,7 +58,12 @@ def add_student_to_lists(students: dict, id: int, name: str, lastname: str):
 
 # add id, name, lastname to "ids" list, "names" list, and "lastnames" list
 
-# def print_students_from_dict(students):
+def print_students_from_dict(students):
+    print('print_students_from_dict ok')
+    print(students)
+    for i in range(len(students['ids'])):
+        print(f"id: {students['ids'][i]}, name: {students['names'][i]}, lastname: {students['lastnames'][i]}")
+
 # print each student in students list
 
 # def print_students_from_list(students):
