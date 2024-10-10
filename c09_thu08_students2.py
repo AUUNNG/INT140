@@ -19,8 +19,7 @@ def main():
             break
         id, name,lastname = read_one_student()
         add_student_to_dict(list_of_dicts, id, name, lastname)
-    # {"ids": id_list, "names": name_list, "lastnames": lastname_list}
-    # loop to ask the user if he wants to append a student
+        add_student_to_lists(dict_of_lists, id, name. lastname)
     # if yes,
     #    call read_one_student() that read id, name, and lastname
     #    call add_student_to_dict(list_of_dicts, id, name, lastname)
@@ -50,7 +49,14 @@ def add_student_to_dict(students: list, id: int, name: str, lastname: str):
     print(students)
 
 
-# def add_student_to_lists(students: dict, id: int, name: str, lastname: str):
+def add_student_to_lists(students: dict, id: int, name: str, lastname: str):
+    print('add_student_to_lists ok')
+    students = {"ids": [], "names": [], "lastnames": []}
+    students['ids'].append(id)
+    students['names'].append(name)
+    students['lastnames'].append(lastname)
+    print(students)
+
 # add id, name, lastname to "ids" list, "names" list, and "lastnames" list
 
 # def print_students_from_dict(students):
