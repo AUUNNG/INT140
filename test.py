@@ -1,14 +1,14 @@
-validate = {
-    67130500109: {
-        "firstname": "Yuttapoom",
-        "lastname": "Haphanom"
-    }
-}
-
-try:
-    result = validate[1]
-except KeyError:
-    result = ""
-
-
-print(result)
+id = "1"
+name = "a" 
+lastname = "a"
+students = {"ids": [], "names": [], "lastnames": []}
+students['ids'].append(id)
+students['names'].append(name)
+students['lastnames'].append(lastname)
+id = "2"
+name = "b" 
+lastname = "b"
+students['ids'].append(id)
+students['names'].append(name)
+students['lastnames'].append(lastname)
+print(students)

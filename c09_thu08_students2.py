@@ -8,26 +8,23 @@
 # 117 ศุภฤกษ์
 
 def main():
-    list_of_dicts = []  # list of dict {"id": ..., "name": ..., "lastname": ...}
-    dict_of_lists = {"ids": [], "names": [], "lastnames": []}  # dict of 3 lists with keys:
+    list_of_dicts = []
+    dict_of_lists = {"ids": [], "names": [], "lastnames": []}
     ask = ""
-    while ask != "yes" and ask != "y":
-        ask = input("do u want to add members (yes/no) : ")
-        if ask.lower() == "no" or ask == "n":
-            # print_students_from_dict(list_of_dicts)
-            # print_students_from_list(dict_of_lists)
+    while True:
+        print('')
+        ask = input("do u want to add members (yes/no/end) : ")
+        ask.lower()
+        if ask == "no" or ask == "n":
+            print_students_from_dict(list_of_dicts)
+            print_students_from_lists(dict_of_lists)
+        if ask == "yes" or ask == "y":
+            id, name,lastname = read_one_student()
+            list_of_dicts = add_student_to_dict(list_of_dicts, id, name, lastname)
+            dict_of_lists = add_student_to_lists(dict_of_lists, id, name, lastname)
+        if ask == "end":
+            print('system> end')
             break
-        id, name,lastname = read_one_student()
-        add_student_to_dict(list_of_dicts, id, name, lastname)
-        add_student_to_lists(dict_of_lists, id, name, lastname)
-    # if yes,
-    #    call read_one_student() that read id, name, and lastname
-    #    call add_student_to_dict(list_of_dicts, id, name, lastname)
-    #    call add_student_to_lists(dict_of_lists, id, name, lastname)
-    # if no,
-    #    call print_students_from_dict(list_of_dicts)
-    #    call print_students_from_lists(dict_of_lists)
-    ######### Note: print 1 student per line
 
 def read_one_student() -> (int, str, str):
     while True:
@@ -36,38 +33,37 @@ def read_one_student() -> (int, str, str):
             if 67130501000 > id >= 67130500000:
                 break
         except ValueError:
-            print("Error")
+            print("system> Error")
     name = input('input ur firstname : ')
     lastname = input('input ur lastname : ')
     return id, name, lastname
 
-def add_student_to_dict(students: list, id: int, name: str, lastname: str):
-    print('add_student_to_dict ok')
-    students = []
+def add_student_to_dict(students: list, id: int, name: str, lastname: str) -> (list):
+    print('system> add_student_to_dict ok')
     dict = {'ids': id, 'names': name, 'lastnames': lastname, }
     students.append(dict)
-    print(students)
+    return students
 
-def add_student_to_lists(students: dict, id: int, name: str, lastname: str):
-    print('add_student_to_lists ok')
-    students = {"ids": [], "names": [], "lastnames": []}
+def add_student_to_lists(students: dict, id: int, name: str, lastname: str) -> (dict):
+    print('system> add_student_to_lists ok')
     students['ids'].append(id)
     students['names'].append(name)
     students['lastnames'].append(lastname)
-    print(students)
-
-# add id, name, lastname to "ids" list, "names" list, and "lastnames" list
+    return students
 
 def print_students_from_dict(students):
-    print('print_students_from_dict ok')
+    print('')
+    print('system> print_students_from_dict ok')
+    print(students)
+    for student in students:
+        print(f"ID: {student['ids']}, Name: {student['names']}, Lastname: {student['lastnames']}")
+
+def print_students_from_lists(students):
+    print('')
+    print('system> print_students_from_lists ok')
     print(students)
     for i in range(len(students['ids'])):
-        print(f"id: {students['ids'][i]}, name: {students['names'][i]}, lastname: {students['lastnames'][i]}")
-
-# print each student in students list
-
-# def print_students_from_list(students):
-# print each student in "ids", "names", and "lastnames" lists
+        print(f"ID: {students['ids'][i]}, Name: {students['names'][i]}, Lastname: {students['lastnames'][i]}")
 
 if __name__ == "__main__":
     main()
