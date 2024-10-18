@@ -15,7 +15,11 @@ def main():
             members = bl_addMember(members, id, name, lastname)
         if ask == "read" or ask == "r":
             id = ui_readMember()
-            print(id)
+            bl_readMember(members, id)
+        if ask == "exit" or ask == "e":
+            print('system > end...')
+            break
+
 def ui_addMember(members: dict) -> (int, str, str):
     while True:
         print()
@@ -33,7 +37,7 @@ def ui_addMember(members: dict) -> (int, str, str):
 
 def ui_readMember() -> (int):
     print()
-    id = int(input('input ur id: '))
+    id = int(input('what id u need: '))
     if 67130500000 > id or id >= 67130501000:
         print('please input id with format (67130500xxx)')
     return id
@@ -43,6 +47,13 @@ def bl_addMember(members: dict, id: int, name: str, lastname: str) -> (dict):
     print('process > bl_addMember')
     members[id] = {'name': name,'lastname': lastname}
     return members
+
+def bl_readMember(members: dict, id: int):
+    print()
+    try:
+        print(f"id: {id} name: {members[id]['name']} lastname: {members[id]['lastname']}")
+    except:
+        print(f'system > we dont have id {id}')
 
 if __name__ == "__main__":
     main()
