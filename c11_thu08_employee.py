@@ -14,21 +14,25 @@ class Employee:
         self._salary = salary
 
     def __repr__(self):
-        return  "fuck"
+        pass
+
+    def get_eid(self):
+        pass
 
     def get_name(self):
-        return self._name
+        pass
 
-    def compare(self,another):
-        if self._eid != another._eid:
-            return False
+    def get_salary(self):
+        pass
 
+    def set_name(new_name):
+        pass
 
-emp = Employee(0,"ky",0)
-emp1 = Employee(1,"1",1)
-print(emp)
-print(emp.get_name())
-print(emp.compare(emp1))
+    def set_salary(new_salary):
+        pass
+
+    def constructor(eid, name, salary):
+        pass
 
 # fields: eid: int, name: str, salary: float
 # methods: get_eid(), get_name(), get_salary(),
