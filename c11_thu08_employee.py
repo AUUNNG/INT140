@@ -1,49 +1,50 @@
-# group name: c11_thu00
-# file name: c11_thu00_employee.py
-# 073 ชัยบดินทร์
-# 106 ภาคิน
-# 108 ภูดิศ
-# 109 ยุทธภูมิ
-# 117 ศุภฤกษ์
-# deadline thu-31-10-2024 before 14:00
-
 class Employee:
+    # Constructor
     def __init__(self, eid: int, name: str, salary: float):
-        self._eid = eid
-        self._name = name
-        self._salary = salary
+        self.eid = eid
+        self.name = name
+        self.salary = salary
 
-    def __repr__(self):
-        pass
+    # Methods to get values
+    def get_eid(self) -> int:
+        return self.eid
 
-    def get_eid(self):
-        pass
+    def get_name(self) -> str:
+        return self.name
 
-    def get_name(self):
-        pass
+    def get_salary(self) -> float:
+        return self.salary
 
-    def get_salary(self):
-        pass
+    # Methods to set new values
+    def set_name(self, new_name: str):
+        self.name = new_name
 
-    def set_name(new_name):
-        pass
+    def set_salary(self, new_salary: float):
+        self.salary = new_salary
 
-    def set_salary(new_salary):
-        pass
+    # Method to compare employees based on eid
+    def compare(self, another_employee) -> int:
+        if self.eid < another_employee.eid:
+            return -1
+        elif self.eid == another_employee.eid:
+            return 0
+        else:
+            return 1
 
-    def constructor(eid, name, salary):
-        pass
+    # String representation of the Employee object
+    def __repr__(self) -> str:
+        return f"Employee(eid: {self.eid}, name: {self.name}, salary: {self.salary})"
 
-# fields: eid: int, name: str, salary: float
-# methods: get_eid(), get_name(), get_salary(),
-#    set_name(new_name), set_salary(new_salary),
-#    constructor(eid, name, salary)
-#    representation: Employee(eid: ..., name: ..., salary: ...)
-#
-# sample code to use the class
-#
-# special points:
-#   method: compare(another_employee)
-#      return -1 if this employee.eid < another_employee.eid
-#      return 0 if the two employees have the same eid
-#      return 1 if this employee.eid > another_employee.eid
+# สร้างอ็อบเจ็กต์ของ Employee
+employee1 = Employee(101, "John Doe", 50000)
+employee2 = Employee(102, "Jane Smith", 55000)
+
+# ใช้งานเมธอดต่างๆ
+print(employee1.get_name())  # "John Doe"
+print(employee1.get_salary())  # 50000
+
+# เปรียบเทียบพนักงาน
+print(employee1.compare(employee2))  # -1 (เพราะ 101 < 102)
+
+# แสดงผลการเปรียบเทียบ
+print(employee1)  # Employee(eid: 101, name: John Doe, salary: 50000)
