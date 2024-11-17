@@ -2,131 +2,97 @@
 c13 assignment
 group id: c13_thu00
 file submission: c13_thu00_fp.py
-submission deadline: Sun 17 Nov 2024 before midnight (23:59)
-
-1. create a class named Employee with the following fields:
-_eid, _name, _salary
-with a constructor (__init__), all getter/setter methods
-and __str__ method
-
-2. create a list of at list 6 employees
-
-3. create the following functions to
-3.1 filter a list of Employees who has salary > 1000
-3.2 map a list of Employees to a list of Employee's name
-3.3 compute an average salary of all Employees on a list
-*** 
-a) write 3.1-3.3 using functional programming style
-b) generalize 3.1-3.3 so that the functions can receive
-other functions for filtering, mapping, or reduction
 """
+# member list in the file
+# 073 chaibadin seajew
+# 106 Pakin siripat
+# 108 Pudit Patdipan
+# 109 yutthaphum haphanom
+# 117 supalerk kamolnetr
 
 from typing import Callable
 from functools import reduce
 
-def imperative():
-    print(5)
-    x = 3.8
-    print(x)
+class Employee:
+    def __init__(self, eid: int, name: str, salary: float):
+        self._eid = eid
+        self._name = name
+        self._salary = salary
 
+    def get_eid(self) -> int:
+        return self._eid
+    
+    def get_name(self) -> str:
+        return self._name
+    
+    def get_salary(self) -> float:
+        return self._salary
+    
+    def set_eid(self, eid: int):
+        self._eid = eid
 
-def functional():
-    x: int = 5
-    print(x)
+    def set_name(self, name: str):
+        self._name = name
 
-    # store a function in a variable
-    def f(p: int) -> int: return 10 * p
-    y: Callable[[int],int] = f
-    print(y(6))
+    def set_salary(self, salary: float):
+        self._salary = salary
+    
+    def __str__(self) -> str:
+        return f"Employee(EID: {self._eid}, Name: {self._name}, Salary: {self._salary})"
 
-    # pass a function as a parameter to another function
-    # that "another" function is called "higher-order function"
-    def g(h: Callable[[int],int], v: int) -> int:
-        return h(v + 3)
-    print(g(f, 5))
+employees = [
+    Employee(1, "Alice", 1500.0),
+    Employee(2, "Bob", 800.0),
+    Employee(3, "Charlie", 2000.0),
+    Employee(4, "David", 1200.0),
+    Employee(5, "Eve", 950.0),
+    Employee(6, "Frank", 2100.0)
+]
 
-    # anonymous function
-    z: Callable[[int], int] = lambda i : i ** 2
-    print(z(25))
-    print(g(z,5))
-    print(g(lambda i: i / 2, 9))
+def filter_high_salary(employees: list) -> list:
+    return list(filter(lambda e: e.get_salary() > 1000, employees))
 
-    # return a function as a return value from another function
-    # that "another" function is called "higher-order function"
-    def k() -> Callable[[int],int]:
-        return lambda j: j % 5
-    print(k()(17))
-    a:Callable[[int],int] = k()
-    print(a(23))
+def map_employee_names(employees: list) -> list:
+    return list(map(lambda e: e.get_name(), employees))
 
-class T:
-    _cls_data: int = None
-    _cls_func: Callable = NotImplemented
+def average_salary(employees: list) -> float:
+    total_salary = reduce(lambda acc, e: acc + e.get_salary(), employees, 0.0)
+    return total_salary / len(employees) if employees else 0.0
 
-    @classmethod
-    def get_cls_data(cls) -> int: return cls._cls_data
-    @classmethod
-    def get_cls_func(cls) -> Callable: return cls._cls_func
-    @classmethod
-    def set_cls_data(cls, data): cls._cls_data = data
-    @classmethod
-    def set_cls_func(cls, func): cls._cls_func = func
-    @classmethod
-    def cls_run(cls): return cls._cls_func(cls._cls_data)
+def filter_employees(employees: list, filter_func: Callable) -> list:
+    return list(filter(filter_func, employees))
 
-    def __init__(self, data: int, func: Callable):
-        self._data = data
-        self._func = func
+def map_employees(employees: list, map_func: Callable) -> list:
+    return list(map(map_func, employees))
 
-    def get_data(self): return self._data
-    def get_func(self): return self._func
-    def set_data(self, data): self._data = data
-    def set_func(self, func): self._func = func
-
-def oop_fp():
-    T.set_cls_data(5)
-    T.set_cls_func(lambda i: i * 100)
-    print(T.cls_run())
-    T.set_cls_func(lambda i: i ** 2)
-    print(T.cls_run())
-    print(T.get_cls_func()(12))
-    t = T(13, lambda j: j % 10)
-    print(t.get_func()(t.get_data()))
-
-def higher():
-    # common higher-order functions
-    # map, filter, reduce, ...
-    # lisp = list processing
-    data = ["Peter","Michael","Smith","Johnson","Albert"]
-
-    # map
-    print(list(map(len,data)))
-
-    result = []
-    for i in data: result.append(len(i))
-    print(result)
-
-    def initial(s): return s[0]
-    x = map(initial,data)
-    print(list(x))
-    print(list(map(lambda s: s[0], data)))
-
-    # filter
-    print(list(filter(lambda s: len(s)==5,data)))
-
-    print(list(map(lambda s: s[0], filter(lambda s: len(s) >=6, data))))
-
-    # reduce
-    print(reduce(lambda x, y: x + ", " + y, data))
-    print(reduce(lambda x, y: x + ", " + y, data, "START"))
-
+def reduce_employees(employees: list, reduce_func: Callable, initial: float) -> float:
+    return reduce(reduce_func, employees, initial)
 
 def main():
-    #imperative()
-    #functional()
-    #oop_fp()
-    higher()
+    high_salary_employees = filter_high_salary(employees)
+    print("Employees with salary > 1000:")
+    for e in high_salary_employees:
+        print(e)
 
+    employee_names = map_employee_names(employees)
+    print("\nEmployee Names:")
+    print(employee_names)
+
+    avg_salary = average_salary(employees)
+    print(f"\nAverage Salary: {avg_salary:.2f}")
+
+    high_salary = filter_employees(employees, lambda e: e.get_salary() > 1000)
+    print("\nGeneralized Filtered Employees (salary > 1000):")
+    for e in high_salary:
+        print(e)
+
+    names = map_employees(employees, lambda e: e.get_name())
+    print("\nGeneralized Mapped Employee Names:")
+    print(names)
+
+    total_salary = reduce_employees(employees, lambda acc, e: acc + e.get_salary(), 0.0)
+    print(f"\nTotal Salary: {total_salary:.2f}")
+    print(f"Average Salary (via reduce): {total_salary / len(employees):.2f}")
 
 if __name__ == "__main__":
     main()

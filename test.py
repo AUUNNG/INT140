@@ -1,6 +1,5 @@
 import re
 
-# คำศัพท์ในแต่ละ Unit
 unit_6_vocab = [
     "angry", "careless", "cheerful", "in a hurry", "noisy", "patient",
     "anxious about her baby", "enthusiastic about music", "late for a flight",
@@ -22,7 +21,7 @@ unit_12_vocab = [
     "overall", "satisfies", "survival", "trust"
 ]
 
-# คำศัพท์ทั้งหมด
+
 all_vocab = {
     "Unit 6": unit_6_vocab,
     "Unit 8": unit_8_vocab,
@@ -33,12 +32,12 @@ all_vocab = {
 paragraph = """
 Scene 1: News on TV
 Reporter: "A murder occurred at a seaside villa among a group of students who gathered for a holiday. Arm Minhyo was found dead in his room. The police have yet to identify the killer, but they suspect that one of the friends present might be involved..."
-Ton: “I can't believe... this happened to us. It's breaking news, how can this be true?”
-Phak: “Why... Why did this happen? This is like a crime story right out of a news article...”
+Ton: “I can't believe... this happened to us. This was supposed to be a peaceful escape, away from the noisy city.”
+Phak: “Why... Why did this happen? We don’t deserve this...”
 Tang: “We’ll never be able to forget this, the consequences are just too much…”
 
 Scene 2: Flashback, Before the Incident
-Oong: “I never thought we’d all be here together like this! And the beach is like paradise, right? It feels so warm and welcoming.”
+Oong: “I never thought we’d all be here together like this! And the beach is like paradise, right? It feels so warm and welcoming, and the air quality is amazing here.”
 Ton: “Yeah! This is exactly the kind of place for us! It’s so rare we get to meet up like this. It feels cozy here.”
 Arm: “Yeah, let’s see who’s getting dragged into the ocean first!”
 Phak: “How about we get started on the food? I’m getting hungry!”
@@ -54,7 +53,7 @@ Ton: “But even after all that, you’re still the friend we trust. You're the 
 Phak: “I can’t believe I’m still friends with someone who used to be so mischievous…”
 
 Scene 4: Heading to Bed
-Phak: “Okay, everyone, we’re swimming early tomorrow, so don’t get too hungover.”
+Phak: “Okay, everyone, we’re swimming early tomorrow, so don’t get too hungover. Be patient until we get through breakfast first!”
 Arm: “Of course! I’ll be the first to jump into the sea.”
 Oong: “Oh, we’ll see about that, Arm. You’re the first we’ll throw in!”
 Ton: “Don’t be too anxious, Oong, we’ll let Arm enjoy the water first.”
@@ -82,7 +81,7 @@ Tang: “Wait… wasn’t that Oong?”
 Phak: “I’ve known for a while, but why did it have to end this way?”
 Ton: “Sigh… All of our good memories have been ruined. I never thought something like this would happen in our circle of friends. It’s like a headline we never expected to see.”
 Oong: “But I can still be friends with everyone, right?”
-Ton: “I’m reluctant to say goodbye to everything we had.”
+Ton: “I’m reluctant to say goodbye to everything we had. But maybe, deep down, you don’t deserve this life with us anymore.”
 """
 
 # ฟังก์ชันตรวจหาคำศัพท์ใน paragraph
